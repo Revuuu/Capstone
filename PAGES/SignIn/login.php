@@ -21,6 +21,17 @@ function display_error_message() {
         echo '<div style="color: red;">' . $_SESSION['error_message'] . '</div>';
         unset($_SESSION['error_message']); // Clear the error message after displaying it
     }
+    else {
+        echo '<div style="color: blue;">No error message set.</div>'; // Debugging line
+    }
+}
+
+function validate_email($email) {
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $_SESSION['error_message'] = 'Invalid email address';
+        header('Location: your_form_page.php'); // Redirect back to the form page
+        exit();
+    }
 }
 
 // Check if form is submitted
@@ -59,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user_email'] = $row['email'];
 
             // Redirect to the user dashboard or another page
-            header("Location: ../Profile/profile.html");
+            header("Location: ../Profile/profile.php");
             exit;
         } else {
             $_SESSION['error_message'] = "Invalid email or password"; // Set error message
