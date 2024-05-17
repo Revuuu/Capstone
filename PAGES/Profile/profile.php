@@ -35,6 +35,19 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_name']) && isset($_SESS
       <p>Your Name: <?php echo $_SESSION['user_name']; ?></p>
       
   <?php endif; ?>
+
+
+<?php if (isset($_SESSION['user_mname'])): ?>
+    <p>Your Middle Name:<?php echo $_SESSION['user_mname']; ?></p>
+<?php else: ?>
+  <p>No middle name</p>
+<?php endif; ?>
+<?php if (isset($_SESSION['user_lname'])): ?>
+    <p>Your Last Name:<?php echo $_SESSION['user_lname']; ?></p>
+<?php endif; ?>
+
+
+
 </body>
 </html>
 
