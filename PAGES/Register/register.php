@@ -38,6 +38,13 @@
           <div> 
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required placeholder="E.g: JuanDelaCruz123@gmail.com">
+            <?php
+                    if (isset($_SESSION['error'])) {
+                        echo '<span style="color: red;">' . $_SESSION['error'] . '</span>';
+                        unset($_SESSION['error']); // Clear the error after displaying it
+                    }
+            ?>
+          
           </div>
           
           <div>
