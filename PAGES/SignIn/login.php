@@ -68,6 +68,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['user_name'] = $row['name'];
             $_SESSION['user_email'] = $row['email'];
+            $_SESSION['user_mname'] = $row['mname'];
+            $_SESSION['user_lname'] = $row['lname'];
 
             // Redirect to the user dashboard or another page
             header("Location: ../Profile/profile.php");
