@@ -29,7 +29,7 @@ function display_error_message() {
 function validate_email($email) {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['error_message'] = 'Invalid email address';
-        header('Location: your_form_page.php'); // Redirect back to the form page
+        header('Location: login.php'); // Redirect back to the form page
         exit();
     }
 }
@@ -68,7 +68,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['user_name'] = $row['name'];
             $_SESSION['user_email'] = $row['email'];
-
+            $_SESSION['user_mname'] = $row['mname'];
+            $_SESSION['user_lname'] = $row['lname'];
+            $_SESSION['profile_picture'] = $row['profile_picture'];
+            
             // Redirect to the user dashboard or another page
             header("Location: ../Profile/profile.php");
             exit;
