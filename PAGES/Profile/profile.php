@@ -92,6 +92,7 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_name']) && isset($_SESS
   <?php if (isset($_SESSION['user_name'])): ?>
       <p>Your Name: <?php echo htmlspecialchars($_SESSION['user_name']); ?></p>
   <?php endif; ?>
+<<<<<<< HEAD
   <?php if (isset($_SESSION['user_mname'])): ?>
       <p>Your Middle Name: <?php echo htmlspecialchars($_SESSION['user_mname']); ?></p>
   <?php else: ?>
@@ -117,5 +118,20 @@ if (isset($_SESSION['user_id']) && isset($_SESSION['user_name']) && isset($_SESS
 <?php endif; ?>
 
 
+=======
+
+
+<?php if (isset($_SESSION['user_mname'])): ?>
+    <p>Your Middle Name:<?php echo $_SESSION['user_mname']; ?></p>
+<?php else: ?>
+  <p>No middle name</p>
+<?php endif; ?>
+<?php if (isset($_SESSION['user_lname'])): ?>
+    <p>Your Last Name:<?php echo $_SESSION['user_lname']; ?></p>
+<?php endif; ?>
+
+
+
+>>>>>>> 6b1c8b0c8bf518974246b69a26c300f840f29f95
 </body>
 </html>
