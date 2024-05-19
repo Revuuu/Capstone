@@ -70,8 +70,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user_email'] = $row['email'];
             $_SESSION['user_mname'] = $row['mname'];
             $_SESSION['user_lname'] = $row['lname'];
+<<<<<<< HEAD
             $_SESSION['profile_picture'] = $row['profile_picture'];
             
+=======
+
+>>>>>>> 6b1c8b0c8bf518974246b69a26c300f840f29f95
             // Redirect to the user dashboard or another page
             header("Location: ../Profile/profile.php");
             exit;

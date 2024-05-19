@@ -47,7 +47,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contactno = isset($_POST['contactno']) ? $_POST['contactno'] : '';
     $gamegenre = isset($_POST['gamegenre']) ? $_POST['gamegenre'] : '';
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6b1c8b0c8bf518974246b69a26c300f840f29f95
     // Validate email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL) || !is_valid_tld($email, $valid_tlds)) {
         echo "<script>alert('Invalid email format!'); window.location.href='../Register/register.html';</script>";
@@ -96,8 +99,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
 
         // Prepare and bind the SQL statement using a prepared statement
+<<<<<<< HEAD
         $stmt = $conn->prepare("INSERT INTO users (name, mname, lname, email, password, age, contactno, gamegenre, profile_picture) VALUES (?, ?, ?, ?, ?, ?,?,?,?)");
         $stmt->bind_param("sssssssss", $name, $mname, $lname, $email, $hashed_password, $age, $contactno, $gamegenre, $profile_picture_name);
+=======
+        $stmt = $conn->prepare("INSERT INTO users (name, mname, lname, email, password, age, contactno, gamegenre) VALUES (?, ?, ?, ?, ?, ?,?,?)");
+        $stmt->bind_param("ssssssss", $name, $mname, $lname, $email, $hashed_password, $age, $contactno, $gamegenre);
+>>>>>>> 6b1c8b0c8bf518974246b69a26c300f840f29f95
 
 
         // Execute the statement
