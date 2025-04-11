@@ -2,22 +2,169 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  background-color: #f4f4f9;
+  min-height: 100vh;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+}
+
+.left-div {
+  display: flex;
+  align-items: center;
+}
+
+.left-div .img-container img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.right-div a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+  margin-left: 10px;
 }
 
 .container {
-  width: 500px;
-  margin: 50px auto;
-  padding: 30px;
+  width: 80%;
+  margin: 0 auto;
+  padding:15px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  text-align: center;
+  border-radius: 0;
+  /* background-color: grey; */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+  font-size: 2em;
+  margin-bottom: 10px;
 }
 
-p {
+.profileForm {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.container .form-group {
+  width: 50%;
+  padding-right: 20px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  margin-top: 50px;
+}
+
+
+
+.form-group label {
+  display: block;
   margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="number"],
+.form-group input[type="tel"],
+.form-group input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input[type="text"]:read only,
+.form-group input[type="email"]:read-only,
+.form-group input[type="number"]:read-only,
+.form-group input[type="tel"]:read-only,
+.form-group input[type="password"]:read-only {
+  background-color: #f9f9f9;
+}
+
+.form-group img.profile-picture {
+  width: 150px;
+  height: auto;
+  border-radius: 50%;
+  display: block;
+  margin: 10px auto;
+}
+
+.form-group p {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.register-btn {
+  text-align: center;
+}
+
+.register-btn button {
+  background: linear-gradient(45deg, #ff6b6b, #ff4757);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.register-btn button:hover {
+  background: linear-gradient(45deg, #ff4757, #ff6b6b);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.register-btn button:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.5);
+}
+
+.register-btn button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(45deg, #ff6b6b, #ff4757);
+}
+
+
+.profile-btn {
+  position: absolute;
+  margin-left: 60rem; /* Adjust to position button from the right edge */
+  bottom: 50px; /* Adjust to move the button up */
+  display: flex;
+  justify-content: flex-end;
+}
+
+body {
+ background: var(--body-color);
+}
+
+
+
+.chat-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.chat-button:hover {
+  background-color: #45a049;
 }

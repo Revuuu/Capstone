@@ -20,16 +20,14 @@ function display_error_message() {
     if (isset($_SESSION['error_message'])) {
         echo '<div style="color: red;">' . $_SESSION['error_message'] . '</div>';
         unset($_SESSION['error_message']); // Clear the error message after displaying it
-    }
-    else {
+    } else {
         echo '<div style="color: blue;">No error message set.</div>'; // Debugging line
     }
 }
 
 function validate_email($email) {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $_SESSION['error_message'] = 'Invalid email address';
-        header('Location: your_form_page.php'); // Redirect back to the form page
+        echo '<script>alert("Invalid email address"); window.location.href = "signin.php";</script>';
         exit();
     }
 }
@@ -39,19 +37,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
+    // Validate email format
+    validate_email($email);
+
     // Retrieve user data from the database based on the entered email
     $sql = "SELECT * FROM users WHERE email=?";
     $stmt = $conn->prepare($sql);
-    // $sql = mysqli_query($conn,"SELECT * FROM users WHERE email='?".$_POST['email']."' and password='".md5($_POST['password'])."'");
-    // $stmt = $conn->prepare($sql);
 
     if ($stmt === false) {
         $_SESSION['error_message'] = "Database query failed: " . $conn->error;
-        header("Location: signin.html");
+        header("Location: signin.php");
         exit;
     }
-
-    // echo '<script> alert ("jerry")</script>';
 
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -61,6 +58,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
         $hashed_password = $row['password'];
+        $verified = $row['verified'];
+        $type = $row['type'];
+
+        // Check if account is verified
+        if ($verified != 1) {
+            echo '<script>
+                alert("Account is not verified. Please check your email for the verification link.");
+                window.location.href = "signin.php";
+              </script>';
+            exit;
+        } 
+        
+        if($type == 'BUYER'){
+            echo '<script>
+                alert("Invalid email or password");
+                window.location.href = "signin.php";
+            </script>';
+            exit;
+        }
 
         // Verify the entered password against the stored hashed password
         if (password_verify($password, $hashed_password)) {
@@ -68,18 +84,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['user_name'] = $row['name'];
             $_SESSION['user_email'] = $row['email'];
-
+            $_SESSION['user_mname'] = $row['mname'];
+            $_SESSION['user_lname'] = $row['lname'];
+            $_SESSION['profile_picture'] = $row['profile_picture'];
+            
             // Redirect to the user dashboard or another page
-            header("Location: ../Profile/profile.php");
+            header("Location: ../Profile/display_profile.php");
             exit;
         } else {
-            $_SESSION['error_message'] = "Invalid email or password"; // Set error message
-            header("Location: signin.html"); // Redirect back to the sign-in page
-            exit;   
+            echo '<script>
+                alert("Incorrect password");
+                window.location.href = "signin.php";
+              </script>';
+            exit;
         }
     } else {
-        $_SESSION['error_message'] = "Invalid email or password"; // Set error message
-        header("Location: signin.html"); // Redirect back to the sign-in page
+        echo '<script>
+            alert("Invalid email or password");
+            window.location.href = "signin.php";
+          </script>';
         exit;
     }
 }
@@ -89,4 +112,4 @@ display_error_message();
 
 // Close the database connection
 $conn->close();
-
+?>

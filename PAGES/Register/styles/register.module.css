@@ -1,86 +1,169 @@
-.form-group1 {
-  margin-top:150px;
-  justify-content:left;
-}
-.register-btn {
-  display:flex;
-  margin-left:-10px;
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  min-height: 100vh;
 }
 
-.add-btn {
+nav {
   display: flex;
-  justify-content: flex-end; 
-  margin-top: -350px; 
-  margin-right: 100px; 
-} 
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+}
 
-input[type="name"],
-input[type="email"],
-input[type="password"] {
-  width: 50%;
-  padding: 8px;
-  margin-bottom: 10px;
+.left-div {
+  display: flex;
+  align-items: center;
+}
+
+.left-div .img-container img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.right-div a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+  margin-left: 10px;
+  font-family: Digital;
+  font-size:20px;
+}
+
+.container {
+  width: 30%;
+  margin: 0px auto; /* Adjusted top and bottom margin for spacing */
+  padding: 30px; /* Adjust padding as needed */
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-top:20px;
+  font-size: 2em; /* Adjusted font size */
+  font-weight: bold;
+}
+
+.form-group {
+  margin-bottom: 20px; /* Adjusted margin to reduce space */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  transition: background-color 0.3s ease;
+}
+
+
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px; /* Adjusted margin for spacing */
+  font-weight: bold;
+  font-size: 25px; /* Adjusted font size */
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px; /* Adjusted margin to reduce space */
   border: 1px solid #ccc;
   border-radius: 5px;
   box-sizing: border-box;
+  background-color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-input[type="email"]:focus,
-input[type="password"]:focus {
-  outline: none;
+.form-group input:focus {
   border-color: #007bff;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
 }
 
-label {
-  font-size: 35px; /* Change the font size to your preferred size */
-  font-family: Arial, sans-serif; /* Change the font family to your preferred font */
-  color:white;
+.form-group input[type="file"] {
+  padding: 5px;
 }
 
-
-/* Container styling */
 .register-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px;
+  text-align: center;
+  margin-top: 20px;
 }
 
-/* Button styling */
 .register-btn button {
-  background: linear-gradient(45deg, #ff6b6b, #ff4757); /* Gradient background */
-  color: white; /* Text color */
-  font-size: 18px; /* Font size */
-  font-weight: bold; /* Font weight */
-  font-family: 'Arial', sans-serif; /* Custom font */
-  border: none; /* Remove default border */
-  border-radius: 25px; /* Rounded corners */
-  padding: 12px 24px; /* Padding for button */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: transform 0.2s, box-shadow 0.2s, background 0.2s; /* Smooth transitions */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  background: linear-gradient(45deg, #ff6b6b, #ff4757);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Hover effect */
 .register-btn button:hover {
-  background: linear-gradient(45deg, #ff4757, #ff6b6b); /* Darker gradient on hover */
-  transform: translateY(-2px); /* Slightly raise the button */
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+  background: linear-gradient(45deg, #ff4757, #ff6b6b);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Focus effect */
 .register-btn button:focus {
-  outline: none; /* Remove default outline */
-  box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.5); /* Custom focus outline */
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.5);
 }
 
-/* Active effect */
 .register-btn button:active {
-  transform: translateY(0); /* Reset transform on click */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Reset shadow on click */
-  background: linear-gradient(45deg, #ff6b6b, #ff4757); /* Original gradient on click */
+  transform: translateY(0);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(45deg, #ff6b6b, #ff4757);
 }
 
 
+.field-icon {
+  position: absolute; /* Positioning the icon inside the input field */
+  right: 15px; /* Align to the right */
+  top: 52%; /* Center vertically */
+  transform: translateY(-30%); /* Correct vertical alignment */
+  cursor: pointer; /* Pointer cursor for better UX */
+}
+.form-group {
+  position: relative; /* Needed for absolute positioning of the icon */
+  margin-bottom: 1.5rem; /* Space between form groups */
+}
+.container {
+  padding-top: 50px;
+  margin: auto;
+}
+.form-group input[type="password"] {
+  padding-right: 30px; /* Ensure space for the icon */
+}
+.contactno-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
 
+.country-code {
+  padding: 3px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  pointer-events: none; /* Makes the country code uneditable */
+  margin-right: 5px;
+  margin-bottom:10px;
+}
+
+.contactno-container input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}

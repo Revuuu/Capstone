@@ -144,9 +144,9 @@ body{
  
 }
 
-h1,h2,h3,p,ul{
+/* h1,h2,h3,p,ul{
   margin: 0;
-}
+} */
 
 ul{
   padding: 0;
@@ -666,7 +666,7 @@ img{
 
 nav.row {
   background: black;
-
+  
 }
 
 .shield-container {
@@ -736,7 +736,7 @@ nav.row {
 }
 @font-face {
   font-family: Digital;
-  src: url('../FONTS/ARCADECLASSIC.ttf') format('opentype');
+  src: url('../FONTS/ARCADECLASSIC.TTF') format('opentype');
 }
 
   
@@ -880,6 +880,8 @@ div > p > a{
   text-decoration:none;
   
 }
+
+
 /* .profile1 {
   display: flex; 
   align-items: center;

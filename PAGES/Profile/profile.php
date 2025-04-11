@@ -2,46 +2,45 @@
 // Start the session (if not already started)
 session_start();
 
-
 // Check if user is logged in by verifying if session data exists
 if (isset($_SESSION['user_id']) && isset($_SESSION['user_name']) && isset($_SESSION['user_email'])) {
-?>
+    // Include your database connection code here
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "user_registration";
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="../styles/profile.module.css">
-  <link rel="stylesheet" href="../../CSS/styles.css">
-  <title>User Profile</title>
-</head>
-<body>
-<nav class="row">
-    <div class="left-div">
-      <div class="img-container">
-        <img src="../../ASSETSGACHA/GACHA LOGO-REVISED.png">
-      </div>
-      <p>GACHA</p>
-    </div>
-    <div class="right-div">
-      <div>
-        <a href="logout.php">Logout</a>
-      </div>
-    </div>                       
-  </nav>
-  <h1>Welcome, <?php echo $_SESSION['user_name']; ?>!</h1>
-  <p>Your Email: <?php echo $_SESSION['user_email']; ?></p>
-  <?php if (isset($_SESSION['user_name'])): ?>
-      <p>Your Name: <?php echo $_SESSION['user_name']; ?></p>
-      
-  <?php endif; ?>
-</body>
-</html>
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 
-<?php
+    // Fetch user data including profile picture from the database
+    $sql = "SELECT profile_picture FROM users WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $_SESSION['user_id']);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows == 1) {
+        $row = $result->fetch_assoc();
+        $profile_picture = $row['profile_picture'];
+
+        if (!empty($profile_picture)) {
+            // Set the path to the profile picture
+            $profile_picture_path = '../Register/assets/uploads/' . $profile_picture;
+        } else {
+            $profile_picture_path = 'img/photo/default.jpg'; // Default image
+        }
+    } else {
+        $profile_picture_path = 'img/photo/default.jpg'; // Default image
+    }
+    // Close database connection
+    $stmt->close();
+    $conn->close();
 } else {
-  // Redirect to login page if session data is missing
-  header("Location: signin.html");
-  exit;
+    // Redirect to login page if session data is missing
+    header("Location: signin.html");
+    exit;
 }
 ?>
